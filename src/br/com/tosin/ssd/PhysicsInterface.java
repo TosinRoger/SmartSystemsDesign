@@ -8,4 +8,5 @@ import br.com.tosin.ssd.models.environment.ObjectInWorld;
  */
 public interface PhysicsInterface {
     boolean moveTo(ObjectInWorld[][] world, Position oldPos, Position newPos);
+    boolean nextMoveIsTarget(ObjectInWorld[][] world, Position oldPos, Position newPos);
 }

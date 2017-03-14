@@ -3,6 +3,8 @@ package br.com.tosin.ssd.ui;
 import br.com.tosin.ssd.models.environment.*;
 import br.com.tosin.ssd.utils.CONST;
 
+import java.util.Scanner;
+
 public class ShowScreen {
 	
 	public void showWorldRender(ObjectInWorld[][] matrix) {
@@ -38,6 +40,20 @@ public class ShowScreen {
 		}
 		System.out.print("\n");
 		
+	}
+
+	public void showWon() {
+		System.out.println("\n");
+		System.out.println("========================================================");
+		System.out.println("CONGRATULATIONS!!!!!");
+		System.out.println("You arrived at the target! \\o/");
+		System.out.println("========================================================");
+		System.out.println("\n\n");
+
+		System.out.println("Press enter to continue");
+
+		Scanner scanner = new Scanner(System.in);
+		scanner.nextLine();
 	}
 
 }
