@@ -49,6 +49,9 @@ public class EnvironmentController extends Physics {
 		if (moveTo(environment.world, agent.getPosition(), newPos)) {
 			updateEnvironment(newPos, agent);
 		}
+		else if (nextMoveIsTarget(environment.world, agent.getPosition(), newPos)) {
+			god.restart();
+		}
 	}
 
 	private void updateEnvironment(Position newPos, Agent agent) {

@@ -1,6 +1,7 @@
 package br.com.tosin.ssd.controllers;
 
 import br.com.tosin.ssd.models.*;
+import br.com.tosin.ssd.ui.BuildStaticEnvironment;
 import br.com.tosin.ssd.ui.ShowScreen;
 
 /**
@@ -11,6 +12,8 @@ public class GodController {
     private EnvironmentController environmentController;
     private AgentController agentController;
     private ShowScreen showScreen;
+
+    private boolean restart = false;
 
     public GodController() {
     }
@@ -26,8 +29,22 @@ public class GodController {
      */
     public void execute(){
         while(true) {
-            Position pos = agentController.moveTo();
-            environmentController.tryMoveObject(pos, agentController.getAgent());
+            if (restart) {
+                environmentController = BuildStaticEnvironment.config1(this);
+                Agent agent = new Agent(9, 0);
+                environmentController.addObjectInWorld(agent);
+
+                agentController = new AgentController(environmentController, this, agent);
+
+                ShowScreen ss = new ShowScreen();
+                ss.showWorldRender(environmentController.getWorld());
+
+                restart = !restart;
+            }
+            else {
+                Position pos = agentController.moveTo();
+                environmentController.tryMoveObject(pos, agentController.getAgent());
+            }
         }
     }
 
@@ -38,4 +55,11 @@ public class GodController {
         showScreen.showWorldRender(environmentController.getWorld());
     }
 
+    public void restart() {
+
+        ShowScreen ss = new ShowScreen();
+        ss.showWon();
+
+        restart = true;
+    }
 }

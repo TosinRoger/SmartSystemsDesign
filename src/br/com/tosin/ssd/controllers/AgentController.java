@@ -20,10 +20,10 @@ public class AgentController extends CONSTANTS_DIRECTIONS {
 
         readPositionInWorld();
 
+        // GET DIRECTION BY USER IN CONSOLE
         String direction = InteractClientUser.getDirection();
 
         Position newPostion = null;
-
 
         if (direction.equals(NORTH)) {
             newPostion = new Position(agent.x - 1, agent.y);
