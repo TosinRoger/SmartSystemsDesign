@@ -22,10 +22,14 @@ public class InteractClientUser extends CONSTANTS_DIRECTIONS {
 
             result = result.toUpperCase();
 
-            if (isDirection(result))
+
+            if (isPlan(result))
+                direction = result;
+            else if (isDirection(result))
                 direction = result;
             else
                 System.out.println("The direction is wrong!");
+
 
         }
         return direction;
@@ -63,5 +67,13 @@ public class InteractClientUser extends CONSTANTS_DIRECTIONS {
         else if (result.equals(SOUTHEAST))
             return true;
         return false;
+    }
+
+    private static boolean isPlan(String result) {
+        result = result.toUpperCase();
+        if (result.equals("PLAN"))
+            return true;
+        else
+            return false;
     }
 }

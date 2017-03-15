@@ -1,6 +1,7 @@
 package br.com.tosin.ssd.controllers;
 
 import br.com.tosin.ssd.models.*;
+import br.com.tosin.ssd.ui.BuildStaticEnvironment;
 import br.com.tosin.ssd.ui.InteractClientUser;
 import br.com.tosin.ssd.utils.CONSTANTS_DIRECTIONS;
 
@@ -16,12 +17,30 @@ public class AgentController extends CONSTANTS_DIRECTIONS {
         this.agent = agent;
     }
 
+    public String getDirection(){
+        if (!agent.plans.isEmpty()) {
+            return agent.plans.remove(0);
+        }
+        String direction = InteractClientUser.getDirection();
+        if (direction.equals("PLAN")) {
+            agent.plans = BuildStaticEnvironment.makePlain1();
+            String plan = "";
+            if (!agent.plans.isEmpty()) {
+                plan = agent.plans.remove(0);
+            }
+
+            return plan;
+        }
+        else
+            return direction;
+    }
+
     public Position moveTo() {
 
         readPositionInWorld();
 
         // GET DIRECTION BY USER IN CONSOLE
-        String direction = InteractClientUser.getDirection();
+        String direction = getDirection();
 
         Position newPostion = null;
 
