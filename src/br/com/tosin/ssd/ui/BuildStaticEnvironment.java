@@ -3,6 +3,9 @@ package br.com.tosin.ssd.ui;
 import br.com.tosin.ssd.controllers.*;
 import br.com.tosin.ssd.models.environment.ObjectInWorld;
 import br.com.tosin.ssd.utils.CONST;
+import br.com.tosin.ssd.utils.CONSTANTS_DIRECTIONS;
+
+import java.util.*;
 
 /**
  * Created by roger on 14/03/17.
@@ -26,5 +29,27 @@ public class BuildStaticEnvironment {
         environment.addObjectInWorld(new ObjectInWorld(2,8, CONST.CODE_TARGET));
 
         return environment;
+    }
+
+    public static List<String> makePlain1() {
+        List<String> plans = new ArrayList<>();
+
+        plans.add(CONSTANTS_DIRECTIONS.NORTH);
+        plans.add(CONSTANTS_DIRECTIONS.NORTH);
+        plans.add(CONSTANTS_DIRECTIONS.NORTH);
+        plans.add(CONSTANTS_DIRECTIONS.NORTH);
+        plans.add(CONSTANTS_DIRECTIONS.NORTH);
+        plans.add(CONSTANTS_DIRECTIONS.NORTH);
+        plans.add(CONSTANTS_DIRECTIONS.NORTH);
+        plans.add(CONSTANTS_DIRECTIONS.EAST);
+        plans.add(CONSTANTS_DIRECTIONS.EAST);
+        plans.add(CONSTANTS_DIRECTIONS.EAST);
+        plans.add(CONSTANTS_DIRECTIONS.EAST);
+        plans.add(CONSTANTS_DIRECTIONS.EAST);
+        plans.add(CONSTANTS_DIRECTIONS.EAST);
+        plans.add(CONSTANTS_DIRECTIONS.EAST);
+        plans.add(CONSTANTS_DIRECTIONS.EAST);
+
+        return plans;
     }
 }
